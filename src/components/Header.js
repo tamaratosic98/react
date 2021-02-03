@@ -1,15 +1,20 @@
 //import React from 'react'
 import PropTypes from 'prop-types'//impt precica
 import Button from './Button'
+import {useLocation} from 'react-router-dom'
+//look at the route that we're currently on
 const Header = ({title, onAdd, showAdd}) => {
     // const onClick=()=>{
     //     console.log('click')
     // }
     //moze da pise i props bez zagrada
+    const location=useLocation()
     return (
         <header className='header'>
             <h1>{title}</h1>
-            <Button text={showAdd?'Close':'Add'} onClick={onAdd}/>
+            {location.pathname==='/' && (
+                <Button text={showAdd?'Close':'Add'} onClick={onAdd}/>
+            )}
         </header>
     )
 }

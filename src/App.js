@@ -1,9 +1,13 @@
 //import logo from './logo.svg';//spinning react logo
 //import './App.css';
 import Header from './components/Header'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Exams from './components/Exams'
 import { useState } from 'react'
 import AddExam from './components/AddExam'
+import Footer from './components/Footer'
+import Info from './components/Info'
+
 function App() {
   const [showAddExam, setShowAddExam]=useState(false)//da se ne prikazuje forma
   //nego kad se klikne na Add dugme
@@ -57,16 +61,32 @@ const toggleReminder=(id)=>{
     ))
 }
   return (
+    <Router>
     <div className="container">
       <Header onAdd={()=> setShowAddExam(!showAddExam)} 
       showAdd={showAddExam} />
-      {showAddExam && <AddExam onAdd={addExam}/>}
-      {exams.length > 0 ? 
-          <Exams  exams={exams} 
+      
+      <Route 
+          path='/' 
+          exact 
+          render={(props)=>(
+            <>
+            {showAddExam && <AddExam onAdd=
+            {addExam}/>}
+            {exams.length > 0 ? (
+            <Exams  
+                  exams={exams} 
                   onDelete={deleteExam} 
-                  onToggle={toggleReminder}/> 
-          : <h3>No Exams to show</h3>}
+                  onToggle={toggleReminder}
+            />):
+            (<h3>No Exams to show</h3>)
+            }
+          </>
+        )}/>
+      <Route path='/info' component={Info}/>
+      <Footer />
     </div>
+    </Router>
   );
 }
 

@@ -20,9 +20,9 @@ body {
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid rgb(148, 15, 15);
+  border: 3px solid rgb(148, 15, 15);
   padding: 30px;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .header {
@@ -98,6 +98,7 @@ body {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+  border-radius: 10px;
 }
 
 .form-control-check {
