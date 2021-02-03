@@ -3,6 +3,7 @@
 import Header from './components/Header'
 import Exams from './components/Exams'
 import { useState } from 'react'
+import AddExam from './components/AddExam'
 function App() {
   const name='Tamara'
   const x=false
@@ -30,6 +31,14 @@ function App() {
             reminder: false,
         }
     ])
+//Add exam
+const addExam=(exam)=>{
+  //console.log(exam);
+  const id=Math.floor(Math.random()*10000)+1//random number
+  //floor radi zaokruzivanje
+  const newExam={id,...exam}
+  setExams([...exams,newExam])
+}
 //Delete exam 
 const deleteExam=(id)=>{
   //console.log('delete',id);
@@ -48,7 +57,7 @@ const toggleReminder=(id)=>{
   return (
     <div className="container">
       <Header />
-
+      <AddExam onAdd={addExam}/>
       {exams.length > 0 ? 
           <Exams  exams={exams} 
                   onDelete={deleteExam} 
