@@ -1,15 +1,15 @@
 //import React from 'react'
 import PropTypes from 'prop-types'//impt precica
 import Button from './Button'
-const Header = ({title}) => {
-    const onClick=()=>{
-        console.log('click')
-    }
+const Header = ({title, onAdd, showAdd}) => {
+    // const onClick=()=>{
+    //     console.log('click')
+    // }
     //moze da pise i props bez zagrada
     return (
         <header className='header'>
             <h1>{title}</h1>
-            <Button text='Add' onClick={onClick}/>
+            <Button text={showAdd?'Close':'Add'} onClick={onAdd}/>
         </header>
     )
 }

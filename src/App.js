@@ -5,8 +5,10 @@ import Exams from './components/Exams'
 import { useState } from 'react'
 import AddExam from './components/AddExam'
 function App() {
-  const name='Tamara'
-  const x=false
+  const [showAddExam, setShowAddExam]=useState(false)//da se ne prikazuje forma
+  //nego kad se klikne na Add dugme
+  //const name='Tamara'
+  //const x=false
   const [exams, setExams]=useState(
     [
         {
@@ -56,8 +58,9 @@ const toggleReminder=(id)=>{
 }
   return (
     <div className="container">
-      <Header />
-      <AddExam onAdd={addExam}/>
+      <Header onAdd={()=> setShowAddExam(!showAddExam)} 
+      showAdd={showAddExam} />
+      {showAddExam && <AddExam onAdd={addExam}/>}
       {exams.length > 0 ? 
           <Exams  exams={exams} 
                   onDelete={deleteExam} 

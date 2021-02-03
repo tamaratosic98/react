@@ -88,6 +88,8 @@ body {
 
 .form-control label {
   display: block;
+  color: white; 
+
 }
 
 .form-control input {
